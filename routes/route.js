@@ -2,13 +2,13 @@ const express = require('express')
 // const router = express.Router()
 const router = express()
 const bodyParser = require('body-parser')
-
+ 
 const session = require('express-session')
-// const {SESSION_SECRET} = process.env
+const {SESSION_SECRET} = process.env
 // router.use(session({secret:SESSION_SECRET}))
 
 router.use(session({
-    secret: 'your-secret-key',
+    secret: SESSION_SECRET,
     resave: false, // Set to false to avoid the deprecation warning
     saveUninitialized: true, // Set to true to avoid the deprecation warning
     // Additional session options go here

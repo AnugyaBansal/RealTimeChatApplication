@@ -76,6 +76,7 @@ const logout = async function(req,res){
 const loadDashboard = async function(req,res){
     try{
         let users = await userModel.find({_id:{$nin:[req.session.user._id]}})
+        // console.log(users)
         res.render('dashboard',{user:req.session.user, users:users})
     }catch(error){
         console.log(error.message)
@@ -89,6 +90,7 @@ const saveChat = async function(req,res){
             receiver_id:req.body.receiver_id,
             message:req.body.message
         })
+        // console.log(chat)
         let newChat = await chat.save()
         res.status(200).send({success:true, msg: 'Chat inserted', data: newChat})
     }catch(error){
@@ -99,6 +101,7 @@ const saveChat = async function(req,res){
 const deleteChat = async function(req, res){
     try{
         await chatModel.deleteOne({_id:req.body.id})
+        // console.log({_id:req.body.id})
         res.status(200).send({sucess:true })
     }catch(error){
         res.status(400).send({success:false, msg: error.message})

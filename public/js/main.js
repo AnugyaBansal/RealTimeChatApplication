@@ -28,9 +28,11 @@ function getCookie(name) {
 }
 
 const userData = JSON.parse(getCookie('user'))
-
+// console.log(userData)
 var sender_id = userData._id;
+// console.log(sender_id)
 var receiver_id;
+// console.log(receiver_id)
 var global_group_id;
 var socket = io('/user-namespace', {
 	auth: {
